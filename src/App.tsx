@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <Rating value={ratingValue} onClick={setRatingValue} />
-      <UncontrolledRating />
+      <UncontrolledRating onChange={setRatingValue}/>
       <Accordion
         titleValue="Menu"
         collapsed={accordionCollapsed}

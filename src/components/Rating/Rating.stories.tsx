@@ -5,7 +5,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import {Rating, RatingValueType} from './Rating'
 
 const meta: Meta<typeof Rating> = {
-   title: 'Rating',
+   title: 'components/Rating',
    component: Rating,
    tags: ['autodocs'],
 }

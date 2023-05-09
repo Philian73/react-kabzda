@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { UncontrolledAccordion } from './UncontrolledAccordion'
 
 const meta: Meta<typeof UncontrolledAccordion> = {
-  title: 'UncontrolledAccordion',
+  title: 'components/UncontrolledAccordion',
   component: UncontrolledAccordion,
   tags: ['autodocs'],
   argTypes: {

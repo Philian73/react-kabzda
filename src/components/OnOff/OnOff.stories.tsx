@@ -5,7 +5,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import {OnOff} from './OnOff'
 
 const meta: Meta<typeof OnOff> = {
-   title: 'OnOff',
+   title: 'components/OnOff',
    component: OnOff,
    tags: ['autodocs'],
 }

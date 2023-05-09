@@ -5,7 +5,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { Accordion } from './Accordion.tsx'
 
 const meta: Meta<typeof Accordion> = {
-  title: 'Accordion',
+  title: 'components/Accordion',
   component: Accordion,
   tags: ['autodocs'],
   argTypes: {

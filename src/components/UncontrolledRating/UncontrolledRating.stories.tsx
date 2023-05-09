@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import {UncontrolledRating} from './UncontrolledRating'
 
 const meta: Meta<typeof UncontrolledRating> = {
-   title: 'UncontrolledRating',
+   title: 'components/UncontrolledRating',
    component: UncontrolledRating,
    tags: ['autodocs'],
    argTypes: {

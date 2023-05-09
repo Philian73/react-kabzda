@@ -23,7 +23,7 @@ type AccordionTitlePropsType = {
 const AccordionTitle: FC<AccordionTitlePropsType> = ({ title, onChange }) => {
   console.log('AccordionTitle rendering')
 
-  return <h3 onClick={onChange}>{title}</h3>
+  return <h3 onClick={()=> onChange()}>{title}</h3>
 }
 
 const AccordionBody = () => {

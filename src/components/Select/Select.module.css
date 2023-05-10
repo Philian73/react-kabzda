@@ -1,0 +1,33 @@
+.select {
+  width: 10rem;
+}
+
+.select span.main {
+  /*border: 1px solid black;*/
+  display: inline-block;
+  min-height: 1.25rem;
+  min-width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.select span.main::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  background-color: #000;
+  height: 2px;
+  width: 100%;
+  left: 0;
+}
+
+.select .items {
+  border: 1px solid black;
+  width: 100%;
+}
+
+.item.selected {
+  background-color: #8484ff;
+  color: #fff;
+}

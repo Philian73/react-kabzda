@@ -8,6 +8,14 @@ const meta: Meta<typeof Accordion> = {
   title: 'components/Accordion',
   component: Accordion,
   tags: ['autodocs'],
+  args: {
+    items: [
+      { title: 'Kolya', value: 1 },
+      { title: 'Nikita', value: 2 },
+      { title: 'Darya', value: 3 },
+      { title: 'Maxim', value: 4 },
+    ],
+  },
   argTypes: {
     titleValue: {
       description: 'Название спойлера.',
@@ -18,6 +26,10 @@ const meta: Meta<typeof Accordion> = {
     onChange: {
       description:
         'Функция-коллбэк, которая при клике на название спойлера меняет состояние collapsed на противоположное.',
+    },
+    onClick: {
+      description: 'Функия-коллбэк, клик на каждый Item внутри Items',
+      action: 'some item was clicked',
     },
   },
 }

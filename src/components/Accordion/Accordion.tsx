@@ -1,17 +1,24 @@
 import { FC } from 'react'
 
+type ItemType = {
+  title: string
+  value: any
+}
+
 type PropsType = {
   titleValue: string
   collapsed: boolean
   onChange: () => void
+  items: ItemType[]
+  onClick: (value: any) => void
 }
-export const Accordion: FC<PropsType> = ({ titleValue, collapsed, onChange }) => {
+export const Accordion: FC<PropsType> = ({ titleValue, collapsed, onChange, items, onClick }) => {
   console.log('Accordion rendering')
 
   return (
     <div>
       <AccordionTitle title={titleValue} onChange={onChange} />
-      {!collapsed && <AccordionBody />}
+      {!collapsed && <AccordionBody items={items} onClick={onClick} />}
     </div>
   )
 }
@@ -23,17 +30,25 @@ type AccordionTitlePropsType = {
 const AccordionTitle: FC<AccordionTitlePropsType> = ({ title, onChange }) => {
   console.log('AccordionTitle rendering')
 
-  return <h3 onClick={()=> onChange()}>{title}</h3>
+  return <h3 onClick={() => onChange()}>{title}</h3>
 }
 
-const AccordionBody = () => {
+type AccordionBodyPropsType = {
+  items: ItemType[]
+  onClick: (value: any) => void
+}
+const AccordionBody: FC<AccordionBodyPropsType> = ({ items, onClick }) => {
   console.log('AccordionBody rendering')
 
-  return (
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-    </ul>
-  )
+  const itemsMap = items.map((item, index) => {
+    const onClickHandler = () => onClick(item.value)
+
+    return (
+      <li onClick={onClickHandler} key={index}>
+        {item.title}
+      </li>
+    )
+  })
+
+  return <ul>{itemsMap}</ul>
 }

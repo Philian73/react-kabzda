@@ -1,8 +1,8 @@
-type StateType = {
+export type StateType = {
   collapsed: boolean
 }
 
-type ActionTypes = ReturnType<typeof changeModeMenuAC>
+export type ActionTypes = ReturnType<typeof changeModeMenuAC>
 
 export const reducer = (state: StateType, action: ActionTypes): StateType => {
   switch (action.type) {

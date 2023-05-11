@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent, useEffect, useState } from 'react'
+import { FC, KeyboardEvent, memo, useEffect, useState } from 'react'
 
 import { ItemType } from '../../App.tsx'
 
@@ -9,7 +9,7 @@ type PropsType = {
   onChange: (value: any) => void
   items: ItemType[]
 }
-export const Select: FC<PropsType> = ({ value, onChange, items }) => {
+export const Select: FC<PropsType> = memo(({ value, onChange, items }) => {
   console.log('Select rendering')
 
   const [active, setActive] = useState(false)
@@ -76,4 +76,4 @@ export const Select: FC<PropsType> = ({ value, onChange, items }) => {
       </div>
     </>
   )
-}
+})

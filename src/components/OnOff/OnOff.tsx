@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 type PropsType = {
   on: boolean
   onChange: (on: boolean) => void
 }
-export const OnOff: FC<PropsType> = ({ on, onChange }) => {
+export const OnOff: FC<PropsType> = memo(({ on, onChange }) => {
   console.log('OnOff rendering')
 
   const onStyle = {
@@ -45,4 +45,4 @@ export const OnOff: FC<PropsType> = ({ on, onChange }) => {
       <div style={indicatorStyle}></div>
     </div>
   )
-}
+})

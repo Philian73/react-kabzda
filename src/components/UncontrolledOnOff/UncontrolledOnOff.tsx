@@ -1,10 +1,10 @@
-import { FC, useState } from 'react'
+import { FC, memo, useState } from 'react'
 
 type PropsType = {
   onChange: (on: boolean) => void
   defaultOn?: boolean
 }
-export const UncontrolledOnOff: FC<PropsType> = ({ onChange, defaultOn }) => {
+export const UncontrolledOnOff: FC<PropsType> = memo(({ onChange, defaultOn }) => {
   console.log('UncontrolledOnOff rendering')
 
   const [on, setOn] = useState<boolean>(defaultOn ? defaultOn : false)
@@ -60,4 +60,4 @@ export const UncontrolledOnOff: FC<PropsType> = ({ onChange, defaultOn }) => {
       <div style={indicatorStyle}></div>
     </div>
   )
-}
+})

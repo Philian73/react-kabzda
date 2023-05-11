@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 
@@ -6,7 +6,7 @@ type PropsType = {
   value: RatingValueType
   onClick: (value: RatingValueType) => void
 }
-export const Rating: FC<PropsType> = ({ value, onClick }) => {
+export const Rating: FC<PropsType> = memo(({ value, onClick }) => {
   console.log('Rating rendering')
 
   return (
@@ -18,15 +18,15 @@ export const Rating: FC<PropsType> = ({ value, onClick }) => {
       <Star selected={value > 4} onClick={onClick} value={5} />
     </div>
   )
-}
+})
 
 type StarPropsType = {
   selected: boolean
   onClick: (value: RatingValueType) => void
   value: RatingValueType
 }
-const Star: FC<StarPropsType> = ({ selected, onClick, value }) => {
+const Star: FC<StarPropsType> = memo(({ selected, onClick, value }) => {
   console.log('Star rendering')
 
   return <span onClick={() => onClick(value)}>{selected ? <b>star </b> : <>star </>}</span>
-}
+})

@@ -1,11 +1,11 @@
-import { FC, useReducer } from 'react'
+import { FC, memo, useReducer } from 'react'
 
 import { changeModeMenuAC, reducer } from './reducer.ts'
 
 type PropsType = {
   children: string
 }
-export const UncontrolledAccordion: FC<PropsType> = ({ children }) => {
+export const UncontrolledAccordion: FC<PropsType> = memo(({ children }) => {
   console.log('UncontrolledAccordion rendering')
 
   // const [collapsed, setCollapsed] = useState<boolean>(false)
@@ -17,19 +17,19 @@ export const UncontrolledAccordion: FC<PropsType> = ({ children }) => {
       {!state.collapsed && <AccordionBody />}
     </div>
   )
-}
+})
 
 type AccordionTitlePropsType = {
   title: string
   onClick: () => void
 }
-const AccordionTitle: FC<AccordionTitlePropsType> = ({ title, onClick }) => {
+const AccordionTitle: FC<AccordionTitlePropsType> = memo(({ title, onClick }) => {
   console.log('AccordionTitle rendering')
 
   return <h3 onClick={onClick}>{title}</h3>
-}
+})
 
-const AccordionBody = () => {
+const AccordionBody = memo(() => {
   console.log('AccordionBody rendering')
 
   return (
@@ -39,4 +39,4 @@ const AccordionBody = () => {
       <li>3</li>
     </ul>
   )
-}
+})

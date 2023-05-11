@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 type ItemType = {
   title: string
@@ -12,32 +12,34 @@ type PropsType = {
   items: ItemType[]
   onClick: (value: any) => void
 }
-export const Accordion: FC<PropsType> = ({ titleValue, collapsed, onChange, items, onClick }) => {
-  console.log('Accordion rendering')
+export const Accordion: FC<PropsType> = memo(
+  ({ titleValue, collapsed, onChange, items, onClick }) => {
+    console.log('Accordion rendering')
 
-  return (
-    <div>
-      <AccordionTitle title={titleValue} onChange={onChange} />
-      {!collapsed && <AccordionBody items={items} onClick={onClick} />}
-    </div>
-  )
-}
+    return (
+      <div>
+        <AccordionTitle title={titleValue} onChange={onChange} />
+        {!collapsed && <AccordionBody items={items} onClick={onClick} />}
+      </div>
+    )
+  }
+)
 
 type AccordionTitlePropsType = {
   title: string
   onChange: () => void
 }
-const AccordionTitle: FC<AccordionTitlePropsType> = ({ title, onChange }) => {
+const AccordionTitle: FC<AccordionTitlePropsType> = memo(({ title, onChange }) => {
   console.log('AccordionTitle rendering')
 
   return <h3 onClick={() => onChange()}>{title}</h3>
-}
+})
 
 type AccordionBodyPropsType = {
   items: ItemType[]
   onClick: (value: any) => void
 }
-const AccordionBody: FC<AccordionBodyPropsType> = ({ items, onClick }) => {
+const AccordionBody: FC<AccordionBodyPropsType> = memo(({ items, onClick }) => {
   console.log('AccordionBody rendering')
 
   const itemsMap = items.map((item, index) => {
@@ -51,4 +53,4 @@ const AccordionBody: FC<AccordionBodyPropsType> = ({ items, onClick }) => {
   })
 
   return <ul>{itemsMap}</ul>
-}
+})

@@ -9,16 +9,16 @@ import { UncontrolledAccordion } from './components/UncontrolledAccordion/Uncont
 import { UncontrolledOnOff } from './components/UncontrolledOnOff/UncontrolledOnOff.tsx'
 import { UncontrolledRating } from './components/UncontrolledRating/UncontrolledRating.tsx'
 
-type ItemType = {
+export type ItemType = {
   title: string
   value: any
 }
 
 const items: ItemType[] = [
-  { title: 'Kolya', value: 1 },
-  { title: 'Nikita', value: 2 },
-  { title: 'Darya', value: 3 },
-  { title: 'Maxim', value: 4 },
+  { title: 'Kolya', value: '1' },
+  { title: 'Nikita', value: '2' },
+  { title: 'Darya', value: '3' },
+  { title: 'Maxim', value: '4' },
 ]
 
 const App = () => {
@@ -27,6 +27,7 @@ const App = () => {
   const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
   const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
   const [switchOn, setSwitchOn] = useState<boolean>(false)
+  const [selectValue, setSelectValue] = useState('')
 
   return (
     <div className="App">
@@ -39,10 +40,10 @@ const App = () => {
         onClick={x => x}
         onChange={() => setAccordionCollapsed(!accordionCollapsed)}
       />
-      <UncontrolledAccordion>Menu 2</UncontrolledAccordion>
+      <UncontrolledAccordion>---Menu 2---</UncontrolledAccordion>
       {/*<OnOff on={switchOn} onChange={setSwitchOn} />*/}
       <UncontrolledOnOff onChange={setSwitchOn} /> {switchOn.toString()}
-      <Select onChange={x => x} items={items} />
+      <Select value={selectValue} onChange={setSelectValue} items={items} />
     </div>
   )
 }

@@ -1,4 +1,6 @@
-import { FC, useState } from 'react'
+import { FC, useReducer } from 'react'
+
+import { changeModeMenuAC, reducer } from './reducer.ts'
 
 type PropsType = {
   children: string
@@ -6,12 +8,13 @@ type PropsType = {
 export const UncontrolledAccordion: FC<PropsType> = ({ children }) => {
   console.log('UncontrolledAccordion rendering')
 
-  const [collapsed, setCollapsed] = useState<boolean>(false)
+  // const [collapsed, setCollapsed] = useState<boolean>(false)
+  const [state, dispatch] = useReducer(reducer, { collapsed: false })
 
   return (
     <div>
-      <AccordionTitle title={children} onClick={() => setCollapsed(!collapsed)} />
-      {!collapsed && <AccordionBody />}
+      <AccordionTitle title={children} onClick={() => dispatch(changeModeMenuAC())} />
+      {!state.collapsed && <AccordionBody />}
     </div>
   )
 }

@@ -1,11 +1,8 @@
 import { FC, KeyboardEvent, useEffect, useState } from 'react'
 
-import s from './Select.module.css'
+import { ItemType } from '../../App.tsx'
 
-type ItemType = {
-  title: string
-  value: any
-}
+import s from './Select.module.css'
 
 type PropsType = {
   value?: any

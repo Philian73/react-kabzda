@@ -19,14 +19,9 @@ type UsersPropsType = {
 }
 const Users: FC<UsersPropsType> = memo(({ users }) => {
   console.log('USERS')
+  const usersMap = users.map((u, i) => <div key={i}>{u}</div>)
 
-  return (
-    <div>
-      {users.map((u, i) => (
-        <div key={i}>{u}</div>
-      ))}
-    </div>
-  )
+  return <div>{usersMap}</div>
 })
 
 export default meta

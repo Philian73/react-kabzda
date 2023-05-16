@@ -26,7 +26,7 @@ const meta: Meta<typeof Select> = {
 
 export default meta
 
-type Story = StoryObj<typeof Select>
+type Story = StoryObj<typeof meta>
 
 export const WithValue: Story = {
   render: args => {

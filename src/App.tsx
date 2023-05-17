@@ -10,15 +10,19 @@ import { UncontrolledOnOff } from './components/UncontrolledOnOff/UncontrolledOn
 import { UncontrolledRating } from './components/UncontrolledRating/UncontrolledRating.tsx'
 
 export type ItemType = {
-  title: string
-  value: any
+  id: string
+  country: string
+  city: string
+  population: number
 }
 
 const items: ItemType[] = [
-  { title: 'Kolya', value: '1' },
-  { title: 'Nikita', value: '2' },
-  { title: 'Darya', value: '3' },
-  { title: 'Maxim', value: '4' },
+  { id: '1', country: 'Russia', city: 'Moscow', population: 12000000 },
+  { id: '2', country: 'Russia', city: 'Saint Petersburg', population: 617000 },
+  { id: '3', country: 'Russia', city: 'Ulyanovsk', population: 617000 },
+  { id: '4', country: 'Belarus', city: 'Minsk', population: 1921000 },
+  { id: '5', country: 'Belarus', city: 'Gomel', population: 526000 },
+  { id: '6', country: 'Belarus', city: 'Mogilev', population: 374644 },
 ]
 
 const App = () => {
@@ -27,7 +31,6 @@ const App = () => {
   const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
   const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
   const [switchOn, setSwitchOn] = useState<boolean>(false)
-  const [selectValue, setSelectValue] = useState('')
 
   return (
     <div className="App">
@@ -43,7 +46,7 @@ const App = () => {
       <UncontrolledAccordion>---Menu 2---</UncontrolledAccordion>
       {/*<OnOff on={switchOn} onChange={setSwitchOn} />*/}
       <UncontrolledOnOff onChange={setSwitchOn} /> {switchOn.toString()}
-      <Select value={selectValue} onChange={setSelectValue} items={items} />
+      <Select value={'1'} items={items} />
     </div>
   )
 }

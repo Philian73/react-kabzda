@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import { Meta, StoryObj } from '@storybook/react'
 
 import { Select } from './Select.tsx'
@@ -10,9 +8,12 @@ const meta: Meta<typeof Select> = {
   tags: ['autodocs'],
   args: {
     items: [
-      { title: 'Ulyanovsk', value: '1' },
-      { title: 'Moscow', value: '2' },
-      { title: 'Saint Petersburg', value: '3' },
+      { id: '1', country: 'Russia', city: 'Moscow', population: 12000000 },
+      { id: '2', country: 'Russia', city: 'Saint Petersburg', population: 617000 },
+      { id: '3', country: 'Russia', city: 'Ulyanovsk', population: 617000 },
+      { id: '4', country: 'Belarus', city: 'Minsk', population: 1921000 },
+      { id: '5', country: 'Belarus', city: 'Gomel', population: 526000 },
+      { id: '6', country: 'Belarus', city: 'Mogilev', population: 374644 },
     ],
   },
   argTypes: {
@@ -30,16 +31,12 @@ type Story = StoryObj<typeof meta>
 
 export const WithValue: Story = {
   render: args => {
-    const [value, setValue] = useState('2')
-
-    return <Select {...args} onChange={setValue} value={value} />
+    return <Select {...args} value={'2'} />
   },
 }
 
 export const WithoutValue: Story = {
   render: args => {
-    const [value, setValue] = useState(null)
-
-    return <Select {...args} onChange={setValue} value={value} />
+    return <Select {...args} value={null} />
   },
 }

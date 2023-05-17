@@ -68,7 +68,7 @@ export const HelpsToReactMemo: Story = {
 
     const filteredUsers = useMemo(() => {
       return users.filter(user => user.toLowerCase().includes('l'))
-    }, [users, counter])
+    }, [users])
 
     const incrementCounter = () => setCounter(prev => prev + 1)
 

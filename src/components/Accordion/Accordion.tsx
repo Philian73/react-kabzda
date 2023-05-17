@@ -1,9 +1,6 @@
 import { FC, memo } from 'react'
 
-type ItemType = {
-  title: string
-  value: any
-}
+import { ItemType } from '../../App.tsx'
 
 type PropsType = {
   titleValue: string
@@ -43,11 +40,11 @@ const AccordionBody: FC<AccordionBodyPropsType> = memo(({ items, onClick }) => {
   console.log('AccordionBody rendering')
 
   const itemsMap = items.map((item, index) => {
-    const onClickHandler = () => onClick(item.value)
+    const onClickHandler = () => onClick(item.id)
 
     return (
       <li onClick={onClickHandler} key={index}>
-        {item.title}
+        {item.city}
       </li>
     )
   })

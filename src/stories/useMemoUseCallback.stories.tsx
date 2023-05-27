@@ -1,9 +1,9 @@
-import { FC, memo, useMemo, useState } from 'react'
+import { FC, memo, useCallback, useMemo, useState } from 'react'
 
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<any> = {
-  title: 'test/useMemo demo',
+  title: 'test/useMemo and useCallback demo',
   tags: ['autodocs'],
 }
 
@@ -19,6 +19,22 @@ const Users: FC<UsersPropsType> = memo(({ users }) => {
   const usersMap = users.map((u, i) => <div key={i}>{u}</div>)
 
   return <div>{usersMap}</div>
+})
+
+type BooksPropsType = {
+  books: string[]
+  addBook: () => void
+}
+const Books: FC<BooksPropsType> = memo(({ books, addBook }) => {
+  console.log('BOOKS')
+  const usersMap = books.map((book, index) => <div key={index}>{book}</div>)
+
+  return (
+    <div>
+      <button onClick={addBook}>add book</button>
+      <div>{usersMap}</div>
+    </div>
+  )
 })
 
 export const DifficultCountingExample: Story = {
@@ -80,6 +96,33 @@ export const HelpsToReactMemo: Story = {
         <button onClick={addUser}>add user</button>
         {counter}
         <Users users={filteredUsers} />
+      </>
+    )
+  },
+}
+
+export const LikeUseCallback: Story = {
+  render: () => {
+    console.log('LikeUseCallback')
+
+    const [counter, setCounter] = useState(0)
+    const [books, setBooks] = useState<string[]>(['React', 'JS', 'CSS', 'HTML'])
+
+    const incrementCounter = () => setCounter(prev => prev + 1)
+
+    // const memoizedAddBook = useMemo(
+    //   () => () => setBooks([...books, `Angular ${new Date().getTime()}`]),
+    //   [books]
+    // )
+    const memoizedAddBook = useCallback(() => {
+      setBooks([...books, `Angular ${new Date().getTime()}`])
+    }, [books])
+
+    return (
+      <>
+        <button onClick={incrementCounter}>+</button>
+        {counter}
+        <Books books={books} addBook={memoizedAddBook} />
       </>
     )
   },

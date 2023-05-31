@@ -53,3 +53,49 @@ export const SimpleExample: Story = {
     )
   },
 }
+
+export const SetTimeoutExample: Story = {
+  render: () => {
+    console.log('SimpleExample')
+
+    const [fake, setFake] = useState(1)
+    const [counter, setCounter] = useState(1)
+
+    useEffect(() => {
+      setInterval(() => {
+        setCounter(prevState => prevState + 1)
+      }, 1000)
+    }, [])
+
+    const incrementFake = () => setFake(fake + 1)
+    const incrementCounter = () => setCounter(counter + 1)
+
+    return (
+      <>
+        <button onClick={incrementFake}>fake+</button>
+        <Counter count={fake} />
+        <button onClick={incrementCounter}>counter+</button>
+        <Counter count={counter} />
+      </>
+    )
+  },
+}
+
+export const ClockExample: Story = {
+  render: () => {
+    console.log('ClockExample')
+
+    const [date, setDate] = useState<Date>(new Date())
+
+    useEffect(() => {
+      setInterval(() => {
+        setDate(new Date())
+      }, 1000)
+    }, [])
+
+    const dateTime = date.toISOString().slice(0, 16)
+    const time = date.toLocaleTimeString()
+
+    return <time dateTime={dateTime}>{time}</time>
+  },
+}

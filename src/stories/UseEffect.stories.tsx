@@ -80,22 +80,3 @@ export const SetTimeoutExample: Story = {
     )
   },
 }
-
-export const ClockExample: Story = {
-  render: () => {
-    console.log('ClockExample')
-
-    const [date, setDate] = useState<Date>(new Date())
-
-    useEffect(() => {
-      setInterval(() => {
-        setDate(new Date())
-      }, 1000)
-    }, [])
-
-    const dateTime = date.toISOString().slice(0, 16)
-    const time = date.toLocaleTimeString()
-
-    return <time dateTime={dateTime}>{time}</time>
-  },
-}
